@@ -6,7 +6,8 @@ const contacts = require("./contacts.json")
 app.use(cors())
 
 app.get("/", (req, res) =>
-  res.send("Hello Hilda!")
+  res.status(404)
+  res.send("Not found")
 )
 
 app.get("/contacts", (req, res) => {
@@ -20,13 +21,13 @@ app.get("/contacts/:id", (req, res) => {
     res.send(oneContact)
   } else {
     res.status(404)        // HTTP status 404: NotFound
-    res.send('Not found')
+    res.send("Not found")
   }
 })
 
 app.get("/*", (req, res) => {
     res.status(404)
-    res.send('Not found')
+    res.send("Not found")
 })
 
 app.listen(8080, () =>

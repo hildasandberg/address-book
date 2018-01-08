@@ -11,10 +11,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/contacts/").then(response => {
-      return response.json()
-    }).then(json => {
-      console.log(json)
+    fetch("http://localhost:8080/contacts/").then(response => response.json()).then(json => {
       this.setState({
         answer: json
       })
@@ -24,14 +21,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Find me in src/app.js!
-
-        {this.state.answer.map(item => {
-          return <Contact
+        <h1>Contact List</h1>
+        {this.state.answer.map(item =>
+          <Contact
+            key={item.id}
             name={item.name}
-            phone={item.phoneNumber} />
-        })}
-
+            phone={item.phoneNumber}
+            email={item.emailAddress} />)}
       </div>
     )
   }
