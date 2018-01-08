@@ -24,6 +24,11 @@ app.get("/contacts/:id", (req, res) => {
   }
 })
 
+app.get("/*", (req, res) => {
+    res.status(404)
+    res.send('Not found')
+})
+
 app.listen(8080, () =>
   console.log("Example app listening on port 8080!")
 )
